@@ -1,0 +1,185 @@
+@media all and (min-width: 1200px) {
+}
+
+@media all and (max-width: 1200px) {
+}
+
+@media all and (max-width: 1080px) {
+}
+
+@media all and (max-width: 992px) {
+}
+
+@media all and (max-width: 768px) {
+    legend {
+        font-size: 18px;
+    }
+
+    .marchant-body {
+        width: auto;
+        height: auto;
+        padding: 20px;
+    }
+
+    .title-main {
+        font-weight: 700;
+        font-size: 22px;
+        color: #000000;
+        margin-bottom: 0;
+    }
+
+    .marchant-body .col-item {
+        padding: 30px;
+    }
+
+    .marchant-body .col-item div {
+        width: auto !important;
+    }
+
+    .delete.btn.btn-danger {
+        margin-bottom: 10px;
+    }
+
+    .personal-info-text {
+        margin-left: unset;
+    }
+
+    .modal {
+        overflow: auto;
+        overflow-y: auto;
+    }
+
+    .personal-info-box {
+        margin: 16px 0px 17px 0px;
+    }
+
+    .nid-birth-style {
+        display: block;
+    }
+
+    .date-of-birth {
+        margin-top: 12px;
+    }
+
+    .double-photo-border-height,
+    .address-border-height,
+    .side-photo-border-height,
+    .single-photo-border-height {
+        height: auto;
+        width: 100%;
+    }
+
+    .business_type_pre {
+        margin: 16px 0px 17px 0px;
+    }
+
+    .content-info-preview .info-item {
+        margin-bottom: 12px;
+    }
+
+    .content-info-preview .info-item:last-child {
+        margin-bottom: unset;
+    }
+    .merchant-image {
+        position: relative;
+        text-align: center;
+        top: unset;
+        right: unset;
+    }
+    .declination-footer {
+        margin-top: 20px;
+    }
+    .declination-footer-item {
+        margin-top: 20px;
+    }
+    .declination-footer-grid {
+        display: block !important;
+    }
+    .modal-content {
+        max-height: 600px;
+    }
+    .button-style {
+        margin: 10px auto;
+    }
+
+    #switchCamera{
+        display: inline-block;
+    }
+}
+
+@media all and (max-width: 576px) {
+    .psd-head .pli-item-table tbody tr td .quantity-input {
+        width: 230% !important;
+    }
+    .psd-head .pli-item-table tbody tr td .quantity-input::placeholder {
+        font-size: 12px !important;
+    }
+    .pli-item-table {
+        font-size: 14px !important;
+    }
+    .pli-item-table .error {
+        color: #ff3e57;
+        position: absolute;
+        left: 29px;
+        background: #fff;
+        padding: 5px;
+        border-radius: 8px;
+    }
+    .pli-c-payment p {
+        font-size: 14px;
+    }
+    .payment-link-client-box .pli-submit-btn {
+        position: inherit;
+        margin-top: 15px;
+    }
+
+    .pli-logo {
+        display: inherit;
+    }
+    .pli-logo h5 {
+        margin-left: 0;
+    }
+
+    .psd-company-logo {
+        display: block;
+    }
+
+    .psd-company-logo h5 {
+        font-size: 24px !important;
+    }
+
+    .mobile-step {
+        display: block;
+    }
+    .desktop-step {
+        display: none;
+    }
+    .merchant-type-res{
+        background: #fff;
+        border-radius: 14px;
+        padding: 30px 20px;
+    }
+    .merchant-type-res .mrt-box{
+        border: 1px solid #ddd;
+    }
+
+    .header-box .change-password{
+        font-size: 13px;
+        margin-right: 5px;
+    }
+    .header-box #logout-button{
+        font-size: 13px;
+    }
+    .edit-step-card li p {
+        font-size: 15px;
+    }
+    .verify-email-input{
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 480px) {
+}
+
+@media all and (max-width: 360px) {
+}
