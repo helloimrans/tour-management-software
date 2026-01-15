@@ -111,21 +111,21 @@ class TourService
                 $actions = '';
 
                 // Schedule button - only show if user has permission
-                if ($authUser->hasPermission('tour-schedule-menu')) {
+                if ($authUser && $authUser->hasPermission('tour-schedule-menu')) {
                     $scheduleUrl = route('tour.schedule.index', $row->id);
                     $actions .= '<a href="' . $scheduleUrl . '" class="btn bg-gradient-info btn-xs mx-1" title="Manage Schedule">
                         <i class="fa-solid fa-calendar-days"></i> Schedule
                     </a>';
                 }
 
-                if ($authUser->hasPermission('tour-update')) {
+                if ($authUser && $authUser->hasPermission('tour-update')) {
                     $editUrl = route('tour.edit', $row->id);
                     $actions .= '<a href="' . $editUrl . '" class="btn bg-gradient-primary btn-xs mx-1">
                         <i class="fa-solid fa-pen-to-square"></i> Edit
                     </a>';
                 }
 
-                if ($authUser->hasPermission('tour-delete')) {
+                if ($authUser && $authUser->hasPermission('tour-delete')) {
                     $deleteUrl = route('tour.destroy', $row->id);
                     $formId = 'delForm-' . $row->id;
 

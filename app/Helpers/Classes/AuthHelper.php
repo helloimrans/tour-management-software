@@ -39,4 +39,10 @@ class AuthHelper
 
         return Auth::guard($guard)->check();
     }
+
+    public static function getAuthUserId(string $guard = 'web'): ?int
+    {
+        $user = self::getAuthUser($guard);
+        return $user ? $user->id : null;
+    }
 }
