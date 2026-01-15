@@ -5,7 +5,9 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\StatusController;
-use App\Http\Controllers\TourController;
+use App\Http\Controllers\Admin\TourController;
+use App\Http\Controllers\Admin\TourScheduleController;
+use App\Http\Controllers\Admin\MemberManagementController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
@@ -87,6 +89,17 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
     Route::resource('tours', TourController::class)->names('tour');
 
+    // Tour Schedule Management
+    Route::get('/tour-schedule/{tourId}', [TourScheduleController::class, 'index'])->name('tour.schedule.index');
+    Route::post('/tour-schedule', [TourScheduleController::class, 'store'])->name('tour.schedule.store');
+    Route::put('/tour-schedule/{id}', [TourScheduleController::class, 'update'])->name('tour.schedule.update');
+    Route::delete('/tour-schedule/{id}', [TourScheduleController::class, 'destroy'])->name('tour.schedule.destroy');
+
+    // Member Management
+    Route::get('/member-management', [MemberManagementController::class, 'index'])->name('member-management.index');
+    Route::post('/member-management/add-to-tour', [MemberManagementController::class, 'addToTour'])->name('member-management.add-to-tour');
+    Route::put('/member-management/{id}', [MemberManagementController::class, 'update'])->name('member-management.update');
+    Route::delete('/member-management/{id}', [MemberManagementController::class, 'destroy'])->name('member-management.destroy');
 
 });
 
