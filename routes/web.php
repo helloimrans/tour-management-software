@@ -36,6 +36,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('admin.login');
     Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
+    Route::get('/member/register', [MemberController::class, 'showRegistrationForm'])->name('member.show.register');
+    Route::post('/member/register', [MemberController::class, 'register'])->name('member.register');
 });
 
 Route::group(['prefix' => 'dashboard', 'as' => 'admin.', 'middleware' => ['auth']], function () {
