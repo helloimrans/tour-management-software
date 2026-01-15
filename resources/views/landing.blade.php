@@ -20,11 +20,10 @@
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ route('landing') }}">
                 @if($settings->app_logo_url ?? null)
-                    <img src="{{ $settings->app_logo_url }}" alt="{{ $settings->app_name ?? 'Logo' }}" style="max-height: 40px; width: auto; margin-right: 10px;">
+                    <img src="{{ $settings->app_logo_url }}" alt="{{ $settings->app_name ?? 'Logo' }}" style="max-height: 40px; width: auto;">
                 @else
-                    <i class="fas fa-plane-departure text-primary me-2"></i>
+                    <i class="fas fa-plane-departure text-primary"></i>
                 @endif
-                <span>{{ $settings->app_name ?? 'Tour Management' }}</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -308,13 +307,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="d-flex align-items-center mb-2">
+                    <div class="mb-2">
                         @if($settings->app_logo_url ?? null)
-                            <img src="{{ $settings->app_logo_url }}" alt="{{ $settings->app_name ?? 'Logo' }}" style="max-height: 40px; width: auto; margin-right: 10px;">
+                            <img src="{{ $settings->app_logo_url }}" alt="{{ $settings->app_name ?? 'Logo' }}" style="max-height: 50px; width: auto;">
                         @else
-                            <i class="fas fa-plane-departure me-2"></i>
+                            <i class="fas fa-plane-departure" style="font-size: 2rem;"></i>
                         @endif
-                        <h5 class="mb-0">{{ $settings->app_name ?? 'Tour Management' }}</h5>
                     </div>
                     <p>{{ $settings->app_slogan ?? 'Your trusted partner for amazing travel experiences.' }}</p>
                 </div>
