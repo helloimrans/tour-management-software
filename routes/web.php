@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\TourScheduleController;
 use App\Http\Controllers\Admin\MemberManagementController;
 use App\Http\Controllers\Admin\ExpenseCategoryController;
 use App\Http\Controllers\Admin\ExpenseController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
@@ -106,6 +107,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     // Expense Management
     Route::resource('expenses', ExpenseController::class)->names('expense');
     Route::resource('expense-categories', ExpenseCategoryController::class)->names('expense-category');
+
+    // Payment Management
+    Route::resource('payments', PaymentController::class)->names('payment');
 
 });
 
