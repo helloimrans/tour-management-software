@@ -32,7 +32,7 @@
                         <a class="nav-link active" href="{{ route('tours.listing') }}">Tours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('member.show.register') ?? '#' }}">Register</a>
+                        <a class="nav-link" href="{{ route('member.show.register') }}">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -146,7 +146,7 @@
 
                                     <div class="mt-3">
                                         @if($tour->tour_members_count < $tour->max_members && in_array($tour->status, ['upcoming', 'ongoing']))
-                                            <a href="{{ route('member.show.register') ?? '#' }}" class="btn btn-primary w-100">
+                                            <a href="{{ route('member.show.register') }}" class="btn btn-primary w-100">
                                                 <i class="fas fa-sign-in-alt"></i> Join Now
                                             </a>
                                         @else
@@ -201,7 +201,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('landing') }}" class="text-white-50">Home</a></li>
                         <li><a href="{{ route('tours.listing') }}" class="text-white-50">Tours</a></li>
-                        <li><a href="{{ route('member.show.register') ?? '#' }}" class="text-white-50">Register</a></li>
+                        <li><a href="{{ route('member.show.register') }}" class="text-white-50">Register</a></li>
                         <li><a href="{{ route('login') }}" class="text-white-50">Login</a></li>
                     </ul>
                 </div>

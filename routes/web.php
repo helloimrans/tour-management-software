@@ -91,6 +91,13 @@ Route::group(['prefix' => 'member', 'as' => 'member.', 'middleware' => ['auth']]
     Route::get('/dashboard', [MemberController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [MemberController::class, 'showProfile'])->name('profile');
     Route::put('/profile', [MemberController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/tours', [MemberController::class, 'tours'])->name('tours');
+    Route::post('/join-tour/{tourId}', [MemberController::class, 'joinTour'])->name('join-tour');
+    Route::get('/current-tour', [MemberController::class, 'currentTour'])->name('current-tour');
+    Route::get('/tour-history', [MemberController::class, 'tourHistory'])->name('tour-history');
+    Route::get('/add-payment', [MemberController::class, 'showPaymentForm'])->name('add-payment');
+    Route::post('/add-payment', [MemberController::class, 'addPayment'])->name('payment.store');
+    Route::get('/payment-history', [MemberController::class, 'paymentHistory'])->name('payment-history');
 });
 
 

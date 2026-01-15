@@ -38,7 +38,7 @@
                         <a class="nav-link" href="{{ route('tours.listing') }}">Tours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('member.show.register') ?? '#' }}">Register</a>
+                        <a class="nav-link" href="{{ route('member.show.register') }}">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -55,7 +55,7 @@
             <p>Join amazing tours and create unforgettable memories</p>
             <div class="mt-4">
                 <a href="{{ route('tours.listing') }}" class="btn btn-custom btn-primary-custom me-3">Browse Tours</a>
-                <a href="{{ route('member.show.register') ?? '#' }}" class="btn btn-custom btn-secondary-custom">Join Now</a>
+                <a href="{{ route('member.show.register') }}" class="btn btn-custom btn-secondary-custom">Join Now</a>
             </div>
         </div>
     </section>
@@ -122,7 +122,7 @@
                         <i class="fas fa-users text-info"></i>
                         <strong>{{ $featuredTour->tour_members_count }} / {{ $featuredTour->max_members }}</strong> members joined
                     </div>
-                    <a href="{{ route('member.show.register') ?? '#' }}" class="btn btn-lg btn-primary">Join This Tour</a>
+                    <a href="{{ route('member.show.register') }}" class="btn btn-lg btn-primary">Join This Tour</a>
                 </div>
             </div>
         </div>
@@ -231,7 +231,7 @@
 
                                     <div>
                                         @if($tour->tour_members_count < $tour->max_members && in_array($tour->status, ['upcoming', 'ongoing']))
-                                            <a href="{{ route('member.show.register') ?? '#' }}" class="btn btn-primary w-100">
+                                            <a href="{{ route('member.show.register') }}" class="btn btn-primary w-100">
                                                 <i class="fas fa-sign-in-alt"></i> Join Now
                                             </a>
                                         @else
@@ -323,7 +323,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('landing') }}" class="text-white-50">Home</a></li>
                         <li><a href="{{ route('tours.listing') }}" class="text-white-50">Tours</a></li>
-                        <li><a href="{{ route('member.show.register') ?? '#' }}" class="text-white-50">Register</a></li>
+                        <li><a href="{{ route('member.show.register') }}" class="text-white-50">Register</a></li>
                         <li><a href="{{ route('login') }}" class="text-white-50">Login</a></li>
                     </ul>
                 </div>
