@@ -6,134 +6,11 @@
     <title>{{ $settings->app_name ?? 'Tour Management' }} - Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/landing-responsive.css') }}">
     <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --dark-color: #2c3e50;
-        }
-
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                         url('{{ asset("frontend/video/tour-bg.jpg") }}') center/cover;
-            height: 600px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn-custom {
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .btn-primary-custom {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary-custom:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary-custom {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary-custom:hover {
-            background: white;
-            color: var(--dark-color);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--dark-color);
-        }
-
-        .tour-card {
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            margin-bottom: 30px;
-        }
-
-        .tour-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .tour-card img {
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .tour-card .card-body {
-            padding: 25px;
-        }
-
-        .tour-card .badge {
-            font-size: 0.85rem;
-            padding: 8px 15px;
-        }
-
-        .feature-box {
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .feature-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .feature-box i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .navbar-custom {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 80px;
         }
     </style>
 </head>
@@ -141,8 +18,13 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ route('landing') }}">
-                <i class="fas fa-plane-departure text-primary"></i> {{ $settings->app_name ?? 'Tour Management' }}
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ route('landing') }}">
+                @if($settings->app_logo_url ?? null)
+                    <img src="{{ $settings->app_logo_url }}" alt="{{ $settings->app_name ?? 'Logo' }}" style="max-height: 40px; width: auto; margin-right: 10px;">
+                @else
+                    <i class="fas fa-plane-departure text-primary me-2"></i>
+                @endif
+                <span>{{ $settings->app_name ?? 'Tour Management' }}</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -156,10 +38,10 @@
                         <a class="nav-link" href="{{ route('tours.listing') }}">Tours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary ms-2" href="#">Register</a>
+                        <a class="nav-link" href="{{ route('member.show.register') ?? '#' }}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary ms-2" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                 </ul>
             </div>
@@ -173,7 +55,7 @@
             <p>Join amazing tours and create unforgettable memories</p>
             <div class="mt-4">
                 <a href="{{ route('tours.listing') }}" class="btn btn-custom btn-primary-custom me-3">Browse Tours</a>
-                <a href="#" class="btn btn-custom btn-secondary-custom">Join Now</a>
+                <a href="{{ route('member.show.register') ?? '#' }}" class="btn btn-custom btn-secondary-custom">Join Now</a>
             </div>
         </div>
     </section>
@@ -213,7 +95,7 @@
 
     <!-- Featured Tour Section -->
     @if($featuredTour)
-    <section class="py-5">
+    <section class="py-5 featured-tour-section">
         <div class="container">
             <div class="section-title">
                 <h2>Featured Tour</h2>
@@ -240,12 +122,148 @@
                         <i class="fas fa-users text-info"></i>
                         <strong>{{ $featuredTour->tour_members_count }} / {{ $featuredTour->max_members }}</strong> members joined
                     </div>
-                    <a href="#" class="btn btn-lg btn-primary">Join This Tour</a>
+                    <a href="{{ route('member.show.register') ?? '#' }}" class="btn btn-lg btn-primary">Join This Tour</a>
                 </div>
             </div>
         </div>
     </section>
     @endif
+
+    <!-- All Tours Section -->
+    <section class="py-5" style="background: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>All Available Tours</h2>
+                <p class="text-muted">Explore our exciting tour packages</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-section">
+                <form method="GET" action="{{ route('tours.listing') }}">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Search Tours</label>
+                            <input type="text" name="search" class="form-control"
+                                   placeholder="Search by name, destination..."
+                                   value="{{ request('search') ?? '' }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold">Status</label>
+                            <select name="status" class="form-select">
+                                <option value="">All Status</option>
+                                <option value="upcoming" {{ request('status') == 'upcoming' ? 'selected' : '' }}>Upcoming</option>
+                                <option value="ongoing" {{ request('status') == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
+                                <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Completed</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold">Sort By</label>
+                            <select name="sort" class="form-select">
+                                <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Latest</option>
+                                <option value="upcoming" {{ request('sort') == 'upcoming' ? 'selected' : '' }}>Upcoming First</option>
+                                <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Price: Low to High</option>
+                                <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Price: High to Low</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            @if(isset($allTours) && $allTours && $allTours->count() > 0)
+                <!-- Results Count -->
+                <div class="mb-4">
+                    <h5 class="text-muted">Found {{ $allTours->count() }} tour(s)</h5>
+                </div>
+
+                <!-- Tours Grid -->
+                <div class="row">
+                    @foreach($allTours as $tour)
+                    <div class="col-md-4 mb-4">
+                        <div class="card tour-card">
+                            <img src="{{ $tour->image_url }}" class="card-img-top" alt="{{ $tour->name }}">
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-2">
+                                    <span class="badge bg-{{ $tour->status == 'ongoing' ? 'success' : ($tour->status == 'upcoming' ? 'info' : 'secondary') }}">
+                                        {{ ucfirst($tour->status) }}
+                                    </span>
+                                    @if($tour->tour_members_count >= $tour->max_members)
+                                        <span class="badge bg-danger">Full</span>
+                                    @elseif($tour->tour_members_count >= ($tour->max_members * 0.8))
+                                        <span class="badge bg-warning">Almost Full</span>
+                                    @endif
+                                </div>
+
+                                <h5 class="card-title">{{ $tour->name }}</h5>
+
+                                <p class="text-muted mb-2">
+                                    <i class="fas fa-map-marker-alt text-danger"></i> {{ $tour->destination }}
+                                </p>
+
+                                <p class="text-muted mb-2">
+                                    <i class="fas fa-calendar"></i>
+                                    {{ $tour->start_date->format('d M Y') }} - {{ $tour->end_date->format('d M Y') }}
+                                </p>
+
+                                @if($tour->description)
+                                <p class="text-muted small mb-3">{{ Str::limit($tour->description, 100) }}</p>
+                                @endif
+
+                                <div class="mt-auto">
+                                    <hr>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <small class="text-muted d-block">Price per person</small>
+                                            <span class="text-success fw-bold fs-5">৳{{ number_format($tour->per_member_cost, 2) }}</span>
+                                        </div>
+                                        <div class="text-end">
+                                            <small class="text-muted d-block">Availability</small>
+                                            <span class="fw-bold">
+                                                <i class="fas fa-users text-info"></i>
+                                                {{ $tour->tour_members_count }}/{{ $tour->max_members }}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        @if($tour->tour_members_count < $tour->max_members && in_array($tour->status, ['upcoming', 'ongoing']))
+                                            <a href="{{ route('member.show.register') ?? '#' }}" class="btn btn-primary w-100">
+                                                <i class="fas fa-sign-in-alt"></i> Join Now
+                                            </a>
+                                        @else
+                                            <button class="btn btn-secondary w-100" disabled>
+                                                @if($tour->tour_members_count >= $tour->max_members)
+                                                    <i class="fas fa-times-circle"></i> Full
+                                                @else
+                                                    <i class="fas fa-ban"></i> Not Available
+                                                @endif
+                                            </button>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{{ route('tours.listing') }}" class="btn btn-lg btn-outline-primary">View All Tours</a>
+                </div>
+            @else
+                <!-- No Tours Found -->
+                <div class="alert alert-info text-center py-5">
+                    <i class="fas fa-info-circle fa-3x mb-3"></i>
+                    <h4>No tours found</h4>
+                    <p>Try adjusting your search filters or check back later for new tours.</p>
+                    <a href="{{ route('tours.listing') }}" class="btn btn-primary mt-3">View All Tours</a>
+                </div>
+            @endif
+        </div>
+    </section>
 
     <!-- Upcoming Tours Section -->
     @if($upcomingTours && $upcomingTours->count() > 0)
@@ -290,7 +308,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5><i class="fas fa-plane-departure"></i> {{ $settings->app_name ?? 'Tour Management' }}</h5>
+                    <div class="d-flex align-items-center mb-2">
+                        @if($settings->app_logo_url ?? null)
+                            <img src="{{ $settings->app_logo_url }}" alt="{{ $settings->app_name ?? 'Logo' }}" style="max-height: 40px; width: auto; margin-right: 10px;">
+                        @else
+                            <i class="fas fa-plane-departure me-2"></i>
+                        @endif
+                        <h5 class="mb-0">{{ $settings->app_name ?? 'Tour Management' }}</h5>
+                    </div>
                     <p>{{ $settings->app_slogan ?? 'Your trusted partner for amazing travel experiences.' }}</p>
                 </div>
                 <div class="col-md-4">
@@ -298,7 +323,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('landing') }}" class="text-white-50">Home</a></li>
                         <li><a href="{{ route('tours.listing') }}" class="text-white-50">Tours</a></li>
-                        <li><a href="#" class="text-white-50">Register</a></li>
+                        <li><a href="{{ route('member.show.register') ?? '#' }}" class="text-white-50">Register</a></li>
                         <li><a href="{{ route('login') }}" class="text-white-50">Login</a></li>
                     </ul>
                 </div>
