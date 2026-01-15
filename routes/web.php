@@ -85,6 +85,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::post('general-users/{id}/assign-role', [UserController::class, 'assignRole'])->name('general.user.assign-role');
     Route::resource('admin-users', AdminUserController::class)->names('admin.user');
 
+    Route::resource('tours', TourController::class)->names('tour');
+
+
 });
 
 Route::group(['prefix' => 'member', 'as' => 'member.', 'middleware' => ['auth']], function () {
