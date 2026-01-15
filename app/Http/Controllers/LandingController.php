@@ -24,6 +24,14 @@ class LandingController extends Controller
             ->latest()
             ->first();
 
+        $data['allTours'] = Tour::whereIn('status', ['upcoming', 'ongoing'])
+            ->withCount(['tourMembers' => function($query) {
+                $query->where('join_status', 'approved');
+            }])
+            ->latest()
+            ->take(9)
+            ->get();
+
         return view('landing', $data);
     }
 
