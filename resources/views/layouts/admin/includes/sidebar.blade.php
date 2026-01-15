@@ -33,7 +33,7 @@
                     <x-nav-item routeName="" iconClass="fa-map-marked-alt" permissionKey="tour-management-menu"
                         label="Tour Management" :submenu="[
                             [
-                                'route' => '',
+                                'route' => 'tours.index',
                                 'icon' => 'fa-map-location-dot',
                                 'permissionKey' => 'tour-menu',
                                 'label' => 'Tours',
