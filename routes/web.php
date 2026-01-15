@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\StatusController;
 use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Admin\TourScheduleController;
 use App\Http\Controllers\Admin\MemberManagementController;
+use App\Http\Controllers\Admin\ExpenseCategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
@@ -100,6 +101,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::post('/member-management/add-to-tour', [MemberManagementController::class, 'addToTour'])->name('member-management.add-to-tour');
     Route::put('/member-management/{id}', [MemberManagementController::class, 'update'])->name('member-management.update');
     Route::delete('/member-management/{id}', [MemberManagementController::class, 'destroy'])->name('member-management.destroy');
+
+    // Expense Categories
+    Route::resource('expense-categories', ExpenseCategoryController::class)->names('expense-category');
 
 });
 
