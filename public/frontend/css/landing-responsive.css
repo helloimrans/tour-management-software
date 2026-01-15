@@ -48,6 +48,37 @@
     font-weight: 600;
 }
 
+/* Dropdown Menu Styles */
+.navbar-nav .dropdown-menu {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 8px 0;
+}
+
+.navbar-nav .dropdown-item {
+    padding: 10px 20px;
+    transition: all 0.3s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+}
+
+.navbar-nav .dropdown-item i {
+    width: 20px;
+}
+
+.navbar-nav .dropdown-divider {
+    margin: 8px 0;
+}
+
 /* ============================================
    Hero Section Responsive
    ============================================ */
@@ -436,6 +467,19 @@
 
     .navbar-nav .nav-link {
         padding: 10px 0;
+        text-align: center;
+    }
+
+    /* Dropdown on mobile */
+    .navbar-nav .dropdown-menu {
+        text-align: center;
+        margin-top: 5px;
+        box-shadow: none;
+        border: 1px solid #e9ecef;
+    }
+
+    .navbar-nav .dropdown-item {
+        padding: 12px 20px;
         text-align: center;
     }
 

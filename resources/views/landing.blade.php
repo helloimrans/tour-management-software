@@ -36,12 +36,36 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('tours.listing') }}">Tours</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('member.show.register') }}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
-                    </li>
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ auth()->user()->user_type == \App\Models\User::ADMIN_USER_CODE ? route('admin.dashboard') : route('member.dashboard') }}">
+                                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="{{ route('admin.logout') }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('member.show.register') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
