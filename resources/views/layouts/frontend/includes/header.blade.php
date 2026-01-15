@@ -2,9 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="logo-box">
-                    <img src="{{ $settings->app_logo_url ?? asset('frontend/logo/logo.png') }}" alt="{{ $settings->app_name ?? 'Logo' }}">
-                </div>
+                @if(!in_array(Route::currentRouteName(), ['login', 'member.show.register']))
+                    <div class="logo-box">
+                        <img src="{{ $settings->app_logo_url ?? asset('frontend/logo/logo.png') }}" alt="{{ $settings->app_name ?? 'Logo' }}">
+                    </div>
+                @endif
             </div>
             <div class="col-md-6 text-right">
                 <div class="d-flex ml-auto justify-content-end">
